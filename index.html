@@ -30,7 +30,7 @@
 <div id="menu">
 <ul>
 <li><a href="index.html">Features</a></li>
-<li><a href="index.html">About</a></li>
+<li><a href="about.html">About</a></li>
 <li><a href="index.html">Installation</a></li>
 <li><a href="index.html">Documentation</a></li>
 <li><a href="index.html">Source Code</a></li>
@@ -47,29 +47,51 @@
 
 For performance reasons, pyoomph uses <a href="https://www.ginac.de">GiNaC</a> and <a href="https://www.ginac.de/CLN/">CLN</a> to automatically generate C code for the equations you have entered in python. It automatically generates C code for symbolically derived Jacobian matrices, parameter derivatives and Hessians. These even include the complicated derivatives with respect to the moving mesh coordinates on a symbolical level. The generated code is compiled and linked back to the running python script, either with the <a href="https://bellard.org/tcc/">TinyC compiler</a> (invoked by <a href="https://github.com/metab0t/tccbox">tccbox</a>) or, when installed, with a more performant alternative like <a href="https://gcc.gnu.org/">gcc</a>, <a href="https://clang.llvm.org/">LLVM/clang</a> or <a href="https://docs.microsoft.com/visualstudio/msbuild/msbuild">MSBuild</a>.
 
-<center><h2>Features</h2></center>
+<center><h1>Features</h1></center>
 
 <div id="columnleft"> 
 <ul>
-<li>Temporal Ordinary Differential Equations</li>
-<li>Spatial Boundary Value Problems</li>
-<li>Spatio-Temporal Problems</li>
-<li>Moving Mesh (ALE) Problems</li>
-<li>Spatial & Temporal Adaptivity</li>
+<li>&#x2022; Temporal ordinary differential equations &#x2022; </li>
+<li>&#x2022; Spatial boundary value problems &#x2022; </li>
+<li>&#x2022; Spatio-temporal problems &#x2022; </li>
+<li>&#x2022; Moving mesh (ALE) problems &#x2022; </li>
+<li>&#x2022; Automatic mesh reconstruction &#x2022; </li>
+<li>&#x2022; Spatial & temporal adaptivity &#x2022; </li>
+<li>&#x2022; Mixed elements &#x2022; </li>
+<li>&#x2022; Additional fields at interfaces &#x2022; </li>
+<li>&#x2022; Stability analysis & bifurcation tracking &#x2022; </li>
+<li>&#x2022; Azimuthal stability analysis &#x2022; </li>
+<li>&#x2022; Linear response to periodic driving &#x2022; </li>
 </ul>
 </div>
 <div id="columnright"> 
 <ul>
-<li>Mixed Elements</li>
-<li>Fields at Interfaces</li>
-<li>Constraints via Lagrange Mulipliers</li>
-<li>Continuous and Discontinuous Galerkin Methods</li>
-<li><B>TODO. Add more</B></li>
+<li>&#x2022; Fully symbolically derived Jacobian/Hessian &#x2022; </li>
+<li>&#x2022; Automatic non-dimensionalization &#x2022; </li>
+<li>&#x2022; Continuous and Discontinuous Galerkin Methods &#x2022; </li>
+<li>&#x2022; Multi-Domain and Multi-Physics &#x2022; </li>
+<li>&#x2022; Coordinate-system-agnostic formulation of equations &#x2022; </li>
+<li>&#x2022; Constraints via Lagrange multipliers &#x2022; </li>
+<li>&#x2022; Free surface dynamics with Marangoni flow &#x2022; </li>
+<li>&#x2022; Multi-component flow with mass transfer &#x2022; </li>
+<li>&#x2022; Vapor-liquid equilibria by group contribution models &#x2022; </li>
+<li>&#x2022; Surfactants with versatile isotherms &#x2022; </li>
+<li>&#x2022; Contact line dynamics &#x2022; </li>
 </ul>
 </div>
 
+<center><h1>How it works</h1></center>
+Formulating custom equations, meshes, problems and materials properties is directly done in Python. Subsequently, once the problem is assembled, the monolithic Jacobian matrix is symbolically derived. To speed up the assembly process, C code is automatically generated, compiled and loaded. Thereby, pyoomph is on par with hand-written implementations in a compiled programming language.
+
+<center><img src="media/framework.gif" width="80%"></center>
+
+This approach allows rapid development of complicated multi-physics and multi-domain problems, including physical dimensions (units) and realistic material properties, varying e.g. with the temperature or the composition.
 
 
+
+<br>
+<br>
+<div id="menu">&nbsp;</div>
 </div>
 
 
