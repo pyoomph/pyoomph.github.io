@@ -54,16 +54,18 @@ a {text-decoration:underline; color:#000000;}
   float: left;
   width: 50%;
   text-align: center;
-  background-color: #EEE;
 }
 
 #columnright {
   float: right;
   width: 50%;
   text-align: center;
-  background-color: #EEE;
 }
 
+#gpl {
+ font-size:14px;
+ background-color:#EEE;
+}
 
 
 @media only screen and (max-width: 357px) {
