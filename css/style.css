@@ -1,0 +1,106 @@
+body, html { padding:0; margin:0; }
+body{ background-color:#FFF;}
+h1 {font-size:26px;color:#202020;}
+img {border-style:none;}
+
+a {text-decoration:underline; color:#000000;}
+
+#page-top { 
+  color: #FFF; 
+  line-height: 1; 
+  margin-left: 0;
+  font-family:'lucida grande',verdana,helvetica,arial,sans-serif;font-size:16px; line-height:1.2;
+  background-image: url("../media/header.jpg");  
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-color: #FFF;
+  height: 200px;    
+  padding: 0px;
+} 
+
+#menu {
+ background-color: #DDD;
+ border-radius: 12px;
+  border: 2px solid #000;
+  padding: 0px; 
+}
+
+#menu {-webkit-text-size-adjust: 135%}
+#menu { background-color:#377e22; text-align:center; line-height:30px; line-height:30px; bottom:0px;margin-left:auto;margin-right:auto;width:100%;}
+#menu ul {list-style:none; padding:0; margin:0; font-size:20px; font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",helvetica,arial,sans-serif; letter-spacing:1px; color:#FFFFFF;}
+#menu li {margin-right:16px; margin-left:16px; display:inline; padding-bottom:3px}
+#menu a {color:#FFF; text-decoration:none; padding:4px;}
+
+#menu a:hover {color: #DDD}
+#menu li.selected a {color: #FFF}
+
+
+#content {position:static; padding:25px; font-family:'lucida grande',verdana,helvetica,arial,sans-serif;font-size:16px; line-height:1.6; margin-left: auto; margin-right:auto; background-color:#FFF;}
+#content {max-width: 950px;min-height:800px} 
+#content {background-color:#FFF;}
+
+
+
+#page-bottom { 
+  background: #000; 
+  color: #FFFFFF; 
+  line-height: 1; 
+  font-family:'lucida grande',verdana,helvetica,arial,sans-serif;font-size:16px; line-height:1.2;
+  align-items: center;
+} 
+
+
+#columnleft {
+  float: left;
+  width: 50%;
+  text-align: center;
+  background-color: #EEE;
+}
+
+#columnright {
+  float: right;
+  width: 50%;
+  text-align: center;
+  background-color: #EEE;
+}
+
+
+
+@media only screen and (max-width: 357px) {
+  #columnleft, #columnright {
+    width: 100%;
+  }
+}
+
+#columnleft ul {list-style:none;}
+#columnright ul {list-style:none;}
+
+#page-bottom a {color: #FFFFFF;}
+
+#page-bottom th, td {
+  border: 0px;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.footer {
+  width: 100%;
+  background: #000000;  
+  color: #ffffff;
+  margin:auto;
+  align-items: center;
+}
+.footer .footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin:auto;
+  align-items: center;  
+}
+
+.footer .footer-row a {
+color: #FFFFFF;
+text-decoration:none;
+}
