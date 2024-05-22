@@ -31,7 +31,7 @@
     
     <center><h2 id="on-mac">On Mac</h2></center>
 
-        <p><strong>If you have a recent Mac with an M1 chip</strong>, you must run all commands in a <code>Rosetta 2 terminal</code>, see <a href="https://www.courier.com/blog/tips-and-tricks-to-setup-your-apple-m1-for-development/">here</a> how to set it up. Also, please downgrade <code>mkl</code> by</p>
+        <p><strong>If you have a recent Mac with an M1 chip</strong>, you must run all commands in a <code>Rosetta 2 terminal</code>, see <a href="https://www.courier.com/blog/tips-and-tricks-to-setup-your-apple-m1-for-development/">here</a> how to set it up. Also, please make sure to not upgrade your <code>mkl</code> package, i.e. enforce it to version 2021.4.0.</p>
 
             <codebox>
                 <p>python3 -m pip install mkl==2021.4.0</p>
@@ -52,106 +52,11 @@
 
     <center><h2 id="compilation-from-source">Compilation from source</h2></center>
 
-        <center><h3 id="linux">Linux</h3></center>
-
-            <p>First, you have to make sure to have installed all dependencies, including some development files (headers). On e.g. Ubuntu, you can do the following</p>
-
-                <codebox>
-                    <p>sudo apt-get install libopenmpi-dev pybind11-dev libginac-dev libcln-dev libgmp-dev ccache libmkl-rt </p>
-                </codebox>
-
-            <p>On other Linux distributions, other package manager like <code>yum</code> or <code>pacman</code> can be used to install the same libraries and headers.
-                Afterwards, compile the required parts of oomph-lib by running </p>
-
-                <codebox>
-                    <p>bash ./prebuild.sh</p>
-                </codebox>
-
-
-            <p>in your pyoomph directory. </p>
-
-            <p>Install required and optional python modules via</p>
-
-                <codebox>
-                    <p>python -m pip gmsh mkl mpi4py matplotlib numpy petsc4py pybind11 pygmsh scipy meshio pybind11-stubgen</p>
-                </codebox>
-
-            <p>If you want to install pyoomph <strong>for development</strong>, it is best to install it via </p>
-
-                <codebox>
-                    <p>bash ./build_for_develop.sh</p>
-                </codebox>
-
-
-            <p>In that case, changes you make in the python files of pyoomph will be used automatically.
-            <strong>Alternatively</strong>, for a <strong>system- or user-wide installation</strong> by installing pyoomph, do</p>
-            
-                <codebox>
-                    <p>bash ./install.sh</p>
-                </codebox>
-                
-            <p>as the last step instead.</p>
-            <p>Verify whether everything runs fine by </p>
-            
-                <codebox>
-                    <p>python -m pyoomph check all</p>
-                </codebox>
-
-        <center><h3 id="mac">Mac</h3></center>
-
-            <p>Besides XCode, you must install a few third-party tools. This can be done by e.g. <a href="https://brew.sh">Homebrew</a>:</p>
-
-                <codebox>
-                    <p>brew install openmpi ccache ginac</p>
-                </codebox>
-
-            <p>Restart your (Rosetta) terminal afterwards.
-            Install required python modules via</p>
-                
-                <codebox>
-                    <p>python3 -m pip install pybind11 gmsh commonmark six pyparsing pygments pillow numpy mpi4py kiwisolver fonttools cycler scipy rich python-dateutils packaging meshio matplotlib pygmsh pybind11-stubgen</p>
-                </codebox>
-                
-            <p><strong>If you have a recent Mac with an M1 chip</strong>, install </p>
-            
-                <codebox>
-                    <p>python3 -m pip install mkl==2021.4.0</p>
-                </codebox>
-                
-            <p><strong>otherwise</strong>, you can install</p>
-                
-                <codebox>
-                    <p>python3 -m pip install mkl</p>
-                </codebox>
-                
-            <p>Then, compile the required parts of oomph-lib:</p>
-                
-                <codebox>
-                    <p>bash ./prebuild.sh</p>
-                </codebox>
-
-            <p>in your pyoomph directory. </p>
-
-            <p>If you want to install pyoomph <strong>for development</strong>, it is best to install it via </p>
-                    
-                    <codebox>
-                        <p>bash ./build_for_develop.sh</p>
-                    </codebox>
-
-            <p>In that case, changes you make in the python files of pyoomph will be used automatically.</p>
-
-            <p><strong>Alternatively</strong> for a <strong>system- or user-wide installation</strong> by installing pyoomph, do</p>
-
-                <codebox>
-                    <p>bash ./install.sh</p>
-                </codebox>
-            
-            <p>as last step instead.</p>
-            
-            <p>Verify whether everything runs fine by </p>
-            
-                <codebox>
-                    <p>python -m pyoomph check all</p>
-                </codebox>
+       Compilation from source on Linux or Mac systems is described <a href="https://github.com/pyoomph/pyoomph/blob/main/INSTALL.md#compilation-from-source">in our github repository</a> and <a href="https://pyoomph.readthedocs.io/en/latest/tutorial/installation/compile.html">our tutorial</a>.<br>
+       Just clone our code
+        <codebox>
+            <p>git clone <a href="https://github.com/pyoomph/pyoomph.git">https://github.com/pyoomph/pyoomph.git</a></p>
+        </codebox>            
+       and follow the steps in the file <code>INSTALL.md</code> therein.
             
 </div>

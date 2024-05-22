@@ -25,7 +25,7 @@ a {text-decoration:underline; color:#000000;}
   padding: 0px; 
 }
 
-#menu {-webkit-text-size-adjust: 135%}
+
 #menu { background-color:#377e22; text-align:center; line-height:30px; line-height:30px; bottom:0px;margin-left:auto;margin-right:auto;width:100%;}
 #menu ul {list-style:none; padding:0; margin:0; font-size:20px; font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",helvetica,arial,sans-serif; letter-spacing:1px; color:#FFFFFF;}
 #menu li {margin-right:16px; margin-left:16px; display:inline; padding-bottom:3px}
@@ -50,17 +50,31 @@ a {text-decoration:underline; color:#000000;}
 } 
 
 
-#columnleft {
-  float: left;
-  width: 50%;
+
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.flex-column {
+  min-width: 470px;
+}
+
+.flex-column ul {
+list-style:none;
   text-align: center;
 }
 
-#columnright {
-  float: right;
-  width: 50%;
-  text-align: center;
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .flex-column {
+    width: 100%;
+  }
 }
+
 
 .code-box {
   padding: 5px;
