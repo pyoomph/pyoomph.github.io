@@ -135,3 +135,50 @@ list-style:none;
 color: #FFFFFF;
 text-decoration:none;
 }
+
+
+.horizontal-media-scroller {
+  --size: 300px;
+
+  
+
+  align-items: center; 
+  display: grid;
+  grid-auto-flow: column;
+  gap: calc(var(--gap) / 2);
+  margin: 0;
+
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+
+  
+  & > li {
+    display: inline-block; /* removes the list-item bullet */
+  }
+
+  & picture {
+    inline-size: var(--size);
+    block-size: var(--size);
+  }
+  
+	  & img {
+	  /* smash into whatever box it's in */
+	  inline-size: 100%;
+	  block-size: 100%;
+	  width: 200px;
+	  height: 150px;
+
+	  /* don't squish but do cover the space */
+	  object-fit: contain;
+
+	  /* soften the edges */
+	  border-radius: 1ex;
+	  overflow: hidden;
+
+	}
+	
+	& figcaption
+	{
+	   text-align: center; 
+	}
+}

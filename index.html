@@ -47,6 +47,299 @@
 
 For performance reasons, pyoomph uses <a href="https://www.ginac.de">GiNaC</a> and <a href="https://www.ginac.de/CLN/">CLN</a> to automatically generate C code for the equations you have entered in python. It automatically generates C code for symbolically derived Jacobian matrices, parameter derivatives and Hessians. These even include the complicated derivatives with respect to the moving mesh coordinates on a symbolical level. The generated code is compiled and linked back to the running python script, either with the <a href="https://bellard.org/tcc/">TinyC compiler</a> (invoked by <a href="https://github.com/metab0t/tccbox">tccbox</a>) or, when installed, with a more performant alternative like <a href="https://gcc.gnu.org/">gcc</a>, <a href="https://clang.llvm.org/">LLVM/clang</a> or <a href="https://docs.microsoft.com/visualstudio/msbuild/msbuild">MSBuild</a>.
 
+<center><h1>Tutorial</h1></center>
+The <a href="https://pyoomph.readthedocs.io/en/latest/">full tutorial can be found here</a>, but below please find some examples to start with:<br>
+<ul class="horizontal-media-scroller">
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/temporal/timestepping/adaptivity.html#secodetemporaladapt>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/plot_lorenz_thumb.png">
+</picture>
+<figcaption>
+Adaptive timestepping for the Lorenz attractor
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/temporal/stability/arclength.html#secodearclength>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/bifurcs_thumb.png">
+</picture>
+<figcaption>
+Stability analysis and bifurcation tracking of ODEs
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/spatial/poisson/adapt.html#secspatialadapt>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/poisson2d_adapt_thumb.png">
+</picture>
+<figcaption>
+Spatial adaptivity for a 2d Poisson equation
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/spatial/stokes/stokeslaw.html#secspatialstokes-law>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/stokes_law_thumb.png">
+</picture>
+<figcaption>
+Flow around a sphere (Stokes law)
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/spatial/stokes/nonormalflow.html#secspatialzeroflowenforcing>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/stokes_noflux_thumb.png">
+</picture>
+<figcaption>
+No normal flow through a curved interface
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/spatial/mesh/resolution.html#secspatialfishmesheye>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/fishgmsh_eye_thumb.png">
+</picture>
+<figcaption>
+Generation of custom meshes
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/pde/wave/doubleslit.html#secpdedoubleslit>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/waveeqdoubleslit_thumb.png">
+</picture>
+<figcaption>
+Wave equation
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/pde/navier/rtinstab.html#secpdertinstab>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/rayleigh_taylor_thumb.png">
+</picture>
+<figcaption>
+Rayleigh-Taylor instability
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/pde/lubric/coalesce.html#secpdelubric-coalescence>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/lubric_coalescence_thumb.png">
+</picture>
+<figcaption>
+Coalescence of droplets via lubrication theory
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/pde/patterns/eigen.html#secpdepattformeigs>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/kse_ics_thumb.png">
+</picture>
+<figcaption>
+Pattern formation and stability analysis
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/ale/freesurf.html#secalefreesurfns>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/free_surface_ns_thumb.png">
+</picture>
+<figcaption>
+Transient simulation of a free surface
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/ale/spread/threedim.html#threedimdroplet>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/threedim_spread_single_thumb.png">
+</picture>
+<figcaption>
+Three-dimensional droplet with varying wettability
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/ale/remesh.html#secaleremeshing>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/remeshing_thumb.png">
+</picture>
+<figcaption>
+Moving meshes and mesh reconstruction
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/ale/spread/maraandgrav.html#secalestatdroplet>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/droplet_mara_grav_thumb.png">
+</picture>
+<figcaption>
+Droplet with Marangoni flow and gravity
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/multidom/melting.html#secmultidomicecyl>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/icecylinder_thumb.png">
+</picture>
+<figcaption>
+Melting of an ice cylinder
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/multidom/stokeslaw.html#secmultidomstokessurfact>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/falling_droplet_thumb.png">
+</picture>
+<figcaption>
+Flow around a sphere with insoluble surfactants
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/multidom/evap.html#secmultidomdropevap>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/dropevap_thumb.png">
+</picture>
+<figcaption>
+Evaporation of a water droplet
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/mcflow/marainstab.html#secricardo>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/heleshaw_half_thumb.png">
+</picture>
+<figcaption>
+Mixture evaporation from a Hele-Shaw cell
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/dg/weakdirichlet.html#secdgweakdbc>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/dg_fvm_d2_thumb.png">
+</picture>
+<figcaption>
+Discontinuous Galerkin methods
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/advstab/response/drums.html#secadvstabdrumresponse>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/pdrdrum_thumb.png">
+</picture>
+<figcaption>
+Linear response to periodic driving
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/advstab/movmesh/dropdetach.html#secdropletdetach>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/dropstab_thumb.png">
+</picture>
+<figcaption>
+Bifurcation tracking of a detaching droplet
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/advstab/azimuthal/rbconvect.html#secadvstabrbconv>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/rb_cyl_thumb.png">
+</picture>
+<figcaption>
+Azimuthal stability analysis
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/advstab/cartesiannormal/rivulet.html#secadvstabrivulets>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/rivuletplots_thumb.png">
+</picture>
+<figcaption>
+Cartesian normal mode stability analysis
+</figcaption>
+</figure>
+</a>
+</li>
+<li>
+<a href=https://pyoomph.readthedocs.io/en/latest/tutorial/precice/coupled_heat_circle.html#secprecicenonmatch>
+<figure>
+<picture>
+<img  loading="lazy" src="media/tutorial/heat_circle_thumb.png">
+</picture>
+<figcaption>
+Coupling multiple simulations with preCICE
+</figcaption>
+</figure>
+</a>
+</li>
+</ul>
+<br>
 <center><h1>Features</h1></center>
 
 <center>
