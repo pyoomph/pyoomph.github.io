@@ -1,0 +1,10 @@
+
+<center><h1>Information</h1></center>
+
+<i>pyoomph</i> is a object-oriented multi-physics finite element framework. It is mainly a custom high level python frontend for the main functionalities (but by far not all) of the powerful C++ library <a href="https://oomph-lib.github.io/oomph-lib/doc/html/">oomph-lib</a>.
+
+<br>
+<br>
+
+For performance reasons, pyoomph uses <a href="https://www.ginac.de">GiNaC</a> and <a href="https://www.ginac.de/CLN/">CLN</a> to automatically generate C code for the equations you have entered in python. It automatically generates C code for symbolically derived Jacobian matrices, parameter derivatives and Hessians. These even include the complicated derivatives with respect to the moving mesh coordinates on a symbolical level. The generated code is compiled and linked back to the running python script, either with the <a href="https://bellard.org/tcc/">TinyC compiler</a> (invoked by <a href="https://github.com/metab0t/tccbox">tccbox</a>) or, when installed, with a more performant alternative like <a href="https://gcc.gnu.org/">gcc</a>, <a href="https://clang.llvm.org/">LLVM/clang</a> or <a href="https://docs.microsoft.com/visualstudio/msbuild/msbuild">MSBuild</a>.
+
