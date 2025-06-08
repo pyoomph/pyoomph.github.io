@@ -31,7 +31,7 @@
     
     <center><h2 id="on-mac">On Mac</h2></center>
 
-        <p><strong>If you have a recent Mac with an Apple silicon (arm64) chip</strong>, you must run all commands in a <code>Rosetta 2 terminal</code>, see <a href="https://www.courier.com/blog/tips-and-tricks-to-setup-your-apple-m1-for-development/">here</a> how to set it up (note that recent systems must be handled as described <a href="https://developer.apple.com/forums/thread/718666">here</a>). Also, please make sure to not upgrade your <code>mkl</code> package, i.e. enforce it to version 2021.4.0.</p>
+        <p><strong>If you have a recent Mac with an Apple silicon (arm64) chip</strong>, you must run all commands in a <code>Rosetta 2 terminal</code>, see <a href="https://www.courier.com/blog/tips-and-tricks-to-setup-your-apple-m1-for-development/">here</a> how to set it up (note that recent systems must be handled as described <a href="https://developer.apple.com/forums/thread/718666">here</a>). Also, please make sure to not upgrade your <code>mkl</code> package, i.e. enforce it to version 2021.4.0. Alternatively, you can compile it directly on arm64, but with the downside of not being able to use the fast Pardiso solver. See <a href="https://pyoomph.readthedocs.io/en/latest/tutorial/installation/source/mac.html">here</a> for details.</p>
 
             <codebox>
                 <p>python3 -m pip install mkl==2021.4.0</p>
