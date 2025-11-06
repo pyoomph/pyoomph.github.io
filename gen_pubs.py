@@ -30,6 +30,7 @@ abbrevs["physical review fluids"]="Phys. Rev. Fluids"
 abbrevs["computer methods in applied mechanics and engineering"]="Comput. Methods Appl. Mech. Eng."
 abbrevs["physical review applied"]="Phys. Rev. Appl."
 abbrevs["communications in computational physics"]="Commun. Comput. Phys."
+abbrevs["advanced science"]="Adv. Sci."
 def format_journal(e):
     
     
