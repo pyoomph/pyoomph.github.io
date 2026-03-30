@@ -31,6 +31,7 @@ abbrevs["computer methods in applied mechanics and engineering"]="Comput. Method
 abbrevs["physical review applied"]="Phys. Rev. Appl."
 abbrevs["communications in computational physics"]="Commun. Comput. Phys."
 abbrevs["advanced science"]="Adv. Sci."
+abbrevs["computer methods in applied mechanics and engineering"]="Comput. Methods Appl. Mech. Eng."
 def format_journal(e):
     
     
