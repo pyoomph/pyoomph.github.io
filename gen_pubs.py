@@ -21,6 +21,7 @@ def format_name(p):
 abbrevs={}
 abbrevs["europhysics letters"]="EPL"
 abbrevs["the european physical journal b"]="Eur. Phys. J. B"
+abbrevs["the european physical journal e"]="Eur. Phys. J. E"
 abbrevs["proceedings of the national academy of sciences"]="PNAS"
 abbrevs["journal of colloid and interface science"]="J. Colloid Interface Sci."
 abbrevs["journal of computational physics"]="J. Comp. Phys."
