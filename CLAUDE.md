@@ -15,7 +15,22 @@ bash gen_page.sh
 
 `gen_page.sh` writes into `_generated/` and is the only build step. There are no tests, no linter, and no local dev server — open `_generated/index.html` in a browser to check output (relative paths to `css/` and `media/` resolve correctly from there).
 
-Deployment is automatic: `.github/workflows/deploy.yml` runs the same commands on every push/PR to `main` and publishes `_generated/` to GitHub Pages via `JamesIves/github-pages-deploy-action`.
+Deployment is automatic once a change reaches `main` — see [Publishing](#publishing) below.
+
+## Publishing
+
+The live site is served from **`pyoomph/pyoomph.github.io`**, which is the `upstream` remote. `origin` is the fork `cdiddens/pyoomph.github.io`. Check with `git remote -v` before pushing anywhere — a push to `upstream/main` publishes immediately, with no review step.
+
+The established flow (how PRs #19–#21 landed):
+
+1. Commit the change — on a feature branch, or on the fork's `main`; both have been used.
+2. `git push -u origin <branch>`
+3. `gh pr create --repo pyoomph/pyoomph.github.io --base main --head cdiddens:<branch>`
+4. Merge the PR. **Merging is what publishes the site**, so it is the user's call, not something to do unprompted.
+
+The merge pushes to `upstream/main`, which triggers `.github/workflows/deploy.yml`: it installs the dependencies, runs `gen_page.sh` and force-pushes `_generated/` to the `gh-pages` branch via `JamesIves/github-pages-deploy-action`. That run takes ~20 s and is followed by GitHub's own "pages build and deployment" run. Check both with `gh run list --repo pyoomph/pyoomph.github.io`.
+
+**A PR from a fork always shows a failing check — this is expected and not a defect in the change.** `deploy.yml` triggers on `pull_request` to `main` as well as on push, but for fork PRs GitHub scopes `GITHUB_TOKEN` to read-only regardless of the `permissions: contents: write` declaration. The build succeeds and only the final push to `gh-pages` fails with a 403, so nothing is published. The check goes green on merge, because a push to `main` runs with a writable token. Gating the deploy step with `if: github.event_name != 'pull_request'` would suppress the red X.
 
 ## How pages are assembled
 
@@ -45,6 +60,29 @@ Renders `pubs.bib` into the numbered publication list on the About page.
 - Every entry needs `year`; non-`incollection` entries also need `volume` and `pages` or the script raises and the build fails.
 - Journal names are shortened via the `abbrevs` dict (lowercase key → abbreviation); add an entry there rather than editing the `.bib`. A `journal` starting with `arXiv` renders as *submitted*.
 - PDF link: `eprint` (labelled "arXiv preprint" if the URL contains arxiv.org, else "Open Access"), otherwise a local `pdf/<citekey>.pdf` if present.
+
+## Finding new publications for `pubs.bib`
+
+The About page lists publications that **use** pyoomph, which is a smaller set than the publications that *cite* it. New entries are found by looking at what cites the main paper (Diddens & Rocha, J. Comput. Phys. **518**, 113306, 2024, `10.1016/j.jcp.2024.113306`) and then screening each candidate.
+
+1. **Collect citing works.** Three DOI-based indexes, all open and without authentication — query all three, they disagree:
+
+   ```bash
+   # OpenAlex (W4401074401 is the JCP paper)
+   curl -sS "https://api.openalex.org/works?filter=cites:W4401074401&per-page=200"
+   # Semantic Scholar
+   curl -sS "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.jcp.2024.113306/citations?fields=title,year,externalIds,venue,authors&limit=100"
+   # OpenCitations (-L is required, the endpoint redirects)
+   curl -sSL "https://opencitations.net/index/coci/api/v1/citations/10.1016/j.jcp.2024.113306"
+   ```
+
+   Merge and dedupe on DOI. The same work routinely appears twice — as preprint (arXiv, SSRN) and as published version — and OpenAlex sometimes holds two records for one DOI. Because all three indexes are DOI-based, theses and non-DOI preprints are invisible to them; Google Scholar reports a somewhat higher count for that reason.
+
+2. **Subtract** what is already in `pubs.bib` and what is already listed in **`pubs_excluded.md`** — both match on DOI, `grep -i` is enough.
+
+3. **Screen the remainder**: the paper must actually *use* pyoomph, not merely cite it. Papers citing the JCP paper for bifurcation tracking, Marangoni modelling or multiphysics coupling in general are common and usually do not use the framework.
+
+4. **Add** what passes to the top of `pubs.bib` (order is literal, see `gen_pubs.py` above), and **append what fails** to `pubs_excluded.md` with the date, so it is not screened again.
 
 ## Files under `_generated/` that are committed
 
