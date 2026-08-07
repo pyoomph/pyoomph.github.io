@@ -36,6 +36,22 @@ a {text-decoration:underline; color:#000000;}
 #menu a {color:#FFF; text-decoration:none; padding:4px;}
 
 #menu a:hover {color: #DDD}
+
+/* small icon in front of every menu entry */
+#menu .menu-icon {
+  width: 0.95em;
+  height: 0.95em;
+  vertical-align: -0.11em;
+  margin-right: 0.35em;
+  fill: currentColor;   /* the three internal entries follow their label */
+}
+/* white variants: the "light logo" Read the Docs publishes for dark backgrounds,
+   and one of the colours GitHub permits for the Invertocat */
+#menu .menu-icon-rtd { fill: #FAFAFA; }
+#menu .menu-icon-github { fill: #FFF; }
+
+/* keep the mark on the same line as its label when the menu wraps */
+#menu a { white-space: nowrap; }
 #menu li.selected a {color: #FFF}
 
 
