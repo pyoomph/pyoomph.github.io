@@ -51,6 +51,7 @@ for img in table.find_all("img"):
 print("<center><h1>Tutorial</h1></center>")
 print('The <a href="'+html_doc+'">full tutorial can be found here</a>, but below please find some examples to start with:<br>')
 
+print('<div class="scroller-frame">')
 print('<ul class="horizontal-media-scroller">')
 for img,title in zip(imgs,titles):
     print('<li>')
@@ -66,4 +67,8 @@ for img,title in zip(imgs,titles):
     print("</a>")
     print("</li>")
 print('</ul>')
+# the strip is wider than the page: say so, since a trackpad or a touch screen
+# gives no scrollbar to notice on its own
+print('<p class="scroller-hint"><span aria-hidden="true">&#8592;</span> scroll sideways for more examples <span aria-hidden="true">&#8594;</span></p>')
+print('</div>')
 print("<br>")
