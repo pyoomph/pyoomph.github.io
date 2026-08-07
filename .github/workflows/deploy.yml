@@ -26,6 +26,11 @@ jobs:
            ls _generated/*
         
       - name: Deploy 🚀
+        # On a pull request the build above is the useful part: a PR from a fork
+        # only ever gets a read-only GITHUB_TOKEN, so the push to gh-pages below
+        # would fail with a 403 and mark the whole run red without publishing
+        # anything. Deploy only on push to main (and on workflow_dispatch).
+        if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: _generated
