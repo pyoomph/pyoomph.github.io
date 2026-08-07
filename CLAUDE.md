@@ -30,7 +30,9 @@ The established flow (how PRs #19–#21 landed):
 
 The merge pushes to `upstream/main`, which triggers `.github/workflows/deploy.yml`: it installs the dependencies, runs `gen_page.sh` and force-pushes `_generated/` to the `gh-pages` branch via `JamesIves/github-pages-deploy-action`. That run takes ~20 s and is followed by GitHub's own "pages build and deployment" run. Check both with `gh run list --repo pyoomph/pyoomph.github.io`.
 
-**A PR from a fork always shows a failing check — this is expected and not a defect in the change.** `deploy.yml` triggers on `pull_request` to `main` as well as on push, but for fork PRs GitHub scopes `GITHUB_TOKEN` to read-only regardless of the `permissions: contents: write` declaration. The build succeeds and only the final push to `gh-pages` fails with a 403, so nothing is published. The check goes green on merge, because a push to `main` runs with a writable token. Gating the deploy step with `if: github.event_name != 'pull_request'` would suppress the red X.
+**On a PR the workflow builds but does not deploy.** `deploy.yml` triggers on `pull_request` to `main` as well as on push, but the deploy step is gated with `if: github.event_name != 'pull_request'`. So the PR check verifies that `gen_page.sh` still succeeds — a red X there means the build is genuinely broken, e.g. an upstream docs layout change tripping `gen_example_gallery.py` — and publishing happens only on the push to `main` after the merge.
+
+That gate exists because a PR from a fork gets a read-only `GITHUB_TOKEN` regardless of the `permissions: contents: write` declaration; before it was added, every fork PR (#19–#22) ended with a 403 on the push to `gh-pages` and a red X that meant nothing.
 
 ## How pages are assembled
 
