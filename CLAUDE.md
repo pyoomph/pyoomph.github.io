@@ -21,12 +21,22 @@ Deployment is automatic once a change reaches `main` — see [Publishing](#publi
 
 The live site is served from **`pyoomph/pyoomph.github.io`**, which is the `upstream` remote. `origin` is the fork `cdiddens/pyoomph.github.io`. Check with `git remote -v` before pushing anywhere — a push to `upstream/main` publishes immediately, with no review step.
 
-The established flow (how PRs #19–#21 landed):
+The established flow (how PRs #19–#24 landed):
 
-1. Commit the change — on a feature branch, or on the fork's `main`; both have been used.
+1. Commit the change on a feature branch — `git checkout -b <branch>`. (The fork's `main` has also been used, but a branch keeps the fork mergeable.)
 2. `git push -u origin <branch>`
 3. `gh pr create --repo pyoomph/pyoomph.github.io --base main --head cdiddens:<branch>`
 4. Merge the PR. **Merging is what publishes the site**, so it is the user's call, not something to do unprompted.
+5. Sync all three copies of `main`:
+   ```bash
+   git checkout main && git pull upstream main && git push origin main
+   ```
+6. Delete the merged branch, locally and on the fork:
+   ```bash
+   git branch -d <branch> && git push origin --delete <branch>
+   ```
+
+Steps 5 and 6 are part of publishing, not an optional tidy-up: without them the local and fork `main` drift behind `upstream/main`, and the next branch is cut from a stale base. Finish with `git log --oneline -1 --decorate` — `HEAD -> main`, `upstream/main` and `origin/main` should all name the merge commit, and `git status` should show nothing but the untracked build outputs listed at the bottom of this file.
 
 The merge pushes to `upstream/main`, which triggers `.github/workflows/deploy.yml`: it installs the dependencies, runs `gen_page.sh` and force-pushes `_generated/` to the `gh-pages` branch via `JamesIves/github-pages-deploy-action`. That run takes ~20 s and is followed by GitHub's own "pages build and deployment" run. Check both with `gh run list --repo pyoomph/pyoomph.github.io`.
 
