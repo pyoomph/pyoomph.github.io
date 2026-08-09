@@ -204,7 +204,9 @@ text-decoration:none;
   align-items: center;
   display: grid;
   grid-auto-flow: column;
-  gap: calc(var(--gap) / 2);
+  /* the breathing space between two thumbnails. It used to come from the
+     browser's default figure margin, which is why it is this wide. */
+  gap: 80px;
   margin: 0;
   padding-bottom: 10px;
 
@@ -268,6 +270,16 @@ text-decoration:none;
   /* soften the edges */
   border-radius: 1ex;
   overflow: hidden;
+}
+
+/* Drop the browser's default figure margin (1em 40px) and pin the figure to the
+   thumbnail width. With the margin in place the caption box was 80px narrower
+   than the image and offset 40px to the right of it, so on narrow screens -
+   where the entry is capped at the image width and the image overflows the
+   figure - the caption ended up visibly left of the picture it belongs to. */
+.horizontal-media-scroller figure {
+  margin: 0;
+  width: 200px;
 }
 
 .horizontal-media-scroller figcaption {
